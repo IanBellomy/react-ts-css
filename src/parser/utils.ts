@@ -89,6 +89,10 @@ export const isCombination = (selector: string) => {
   return selector.indexOf(".") > -1;
 };
 
+export const isDataAttribute = (selector: string) => {
+  return selector.includes("[data-");
+};
+
 export const stripSelectHelpers = (str: string) => {
   return str.replace(/(\&\.)|(\&\-)|(&\s.)|&|^\./gm, "");
 };

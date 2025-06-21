@@ -149,6 +149,12 @@
           "title": "Rename Selector",
           "default": true,
           "description": "Rename selectors across multiple locations"
+        },
+        "reactTsScss.dataAttributeHover": {
+          "type": "boolean",
+          "title": "Data Attribute Hover",
+          "default": true,
+          "description": "Peek CSS properties for data attributes on hover"
         }
       }
     },

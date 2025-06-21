@@ -1,0 +1,68 @@
+.container {
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+
+.testElement {
+  background-color: #f0f0f0;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Data attribute selectors */
+.testElement[data-testid="test-element"] {
+  border: 2px solid #007bff;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0.5rem;
+}
+
+/* Data attribute selectors for buttons */
+.button[data-variant="primary"] {
+  background-color: #007bff;
+  color: white;
+}
+
+.button[data-variant="primary"][data-size="large"] {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+}
+
+.statusIndicator {
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+/* Data attribute selectors for status */
+.statusIndicator[data-state="loading"] {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.statusIndicator[data-theme="dark"] {
+  background-color: #343a40;
+  color: white;
+}
+
+.status {
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+/* Data attribute selectors for status */
+.status[data-status="active"] {
+  background-color: #28a745;
+  color: white;
+}
+
+.status[data-status="inactive"] {
+  background-color: #6c757d;
+  color: white;
+}

@@ -117,6 +117,14 @@ export class Settings {
   public set renameSelector(v: Array<string> | undefined) {
     workspace.getConfiguration(EXT_NAME).update("renameSelector", v);
   }
+
+  public get dataAttributeHover(): boolean | undefined {
+    return getSettings().get("dataAttributeHover");
+  }
+
+  public set dataAttributeHover(v: boolean | undefined) {
+    workspace.getConfiguration(EXT_NAME).update("dataAttributeHover", v);
+  }
 }
 
 export default new Settings();

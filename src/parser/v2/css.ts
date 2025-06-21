@@ -30,6 +30,7 @@ import {
   isPsuedo,
   isSibling,
   isSuffix,
+  isDataAttribute,
 } from "../utils";
 import Store from "../../store/Store";
 
@@ -157,6 +158,13 @@ export const getSelectors = (ast: Stylesheet, document: TextDocument) => {
           selector = selector.replace(/& ./gi, "");
         } else if (isNormal(selector)) {
           selector = selector.replace(".", "");
+        } else if (isDataAttribute(selector)) {
+          // Handle data attribute selectors - keep the full selector
+          // but extract the base class name for the key
+          const baseClassMatch = selector.match(/^\.([a-zA-Z][a-zA-Z0-9_-]*)/);
+          if (baseClassMatch) {
+            selector = baseClassMatch[1];
+          }
         } else {
           isInvalid = true;
         }

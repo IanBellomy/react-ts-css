@@ -28,6 +28,7 @@ export type StyleReferences = {
     }
   >;
 };
+
 type ParsedResult = {
   parsedResult: ParserResult;
   style_references: StyleReferences["style_references"];
@@ -56,6 +57,31 @@ export class Parser {
       );
     }
     return undefined;
+  }
+
+  /**
+   * Get data attribute at a specific offset
+   * @param offset number
+   * @returns DataAttribute | undefined
+   */
+  public getDataAttributeAtOffset(offset: number) {
+    if (this.parsed_result?.parsedResult?.data_attributes) {
+      return this.parsed_result.parsedResult.data_attributes.find(
+        (attr) => {
+          const startOffset = this.getOffsetFromPosition(attr.range.start.line, attr.range.start.column);
+          const endOffset = this.getOffsetFromPosition(attr.range.end.line, attr.range.end.column);
+          return startOffset <= offset && offset <= endOffset;
+        }
+      );
+    }
+    return undefined;
+  }
+
+  private getOffsetFromPosition(line: number, column: number): number {
+    // This is a simplified implementation - in a real scenario, you'd need to
+    // convert from line/column to offset based on the document content
+    // For now, we'll use a rough approximation
+    return line * 100 + column;
   }
 
   private resolveCssFilePath(source: string, filePath: string) {

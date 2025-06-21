@@ -1,0 +1,96 @@
+.container {
+  padding: 2rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.testElement {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+}
+
+/* Data attribute selectors for test elements */
+.testElement[data-testid="test-element"] {
+  border-color: #007bff;
+  border-width: 2px;
+  background-color: #e3f2fd;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Data attribute selectors for buttons */
+.button[data-variant="primary"] {
+  background-color: #007bff;
+  color: white;
+}
+
+.button[data-variant="primary"]:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.button[data-variant="primary"][data-size="large"] {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+.statusIndicator {
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Data attribute selectors for status indicators */
+.statusIndicator[data-state="loading"] {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+.statusIndicator[data-theme="dark"] {
+  background-color: #343a40;
+  color: white;
+  border: 1px solid #495057;
+}
+
+.statusIndicator[data-state="loading"][data-theme="dark"] {
+  background-color: #495057;
+  color: #ffc107;
+  border-color: #6c757d;
+}
+
+.status {
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+/* Data attribute selectors for status */
+.status[data-status="active"] {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status[data-status="inactive"] {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}

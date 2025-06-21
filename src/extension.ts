@@ -12,6 +12,7 @@ import Settings, { EXT_NAME, getSettings } from "./settings";
 import Store from "./store/Store";
 import { DefnitionProvider } from "./providers/ts/definitions";
 import { HoverProvider } from "./providers/ts/hover";
+import { DataAttributeHoverProvider } from "./providers/ts/data-attribute-hover";
 import {
   SelectorsCompletionProvider,
   ImportCompletionProvider,
@@ -97,6 +98,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       Settings.autoComplete = getSettings().get("autoComplete");
       Settings.definition = getSettings().get("definition");
       Settings.peekProperties = getSettings().get("peekProperties");
+      Settings.dataAttributeHover = getSettings().get("dataAttributeHover");
       Settings.cssAutoComplete = getSettings().get("cssAutoComplete");
       Settings.cssDefinitions = getSettings().get("cssDefinitions");
       Settings.diagnostics = getSettings().get("diagnostics");
@@ -133,6 +135,10 @@ export async function activate(context: ExtensionContext): Promise<void> {
     const _hoverProvider = languages.registerHoverProvider(
       documentSelector,
       new HoverProvider(),
+    );
+    const _dataAttributeHoverProvider = languages.registerHoverProvider(
+      documentSelector,
+      new DataAttributeHoverProvider(),
     );
     const _selectorsCompletionProvider =
       languages.registerCompletionItemProvider(
@@ -186,6 +192,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
     context.subscriptions.push(_cssVariablesCompletion);
     context.subscriptions.push(_definitionProvider);
     context.subscriptions.push(_hoverProvider);
+    context.subscriptions.push(_dataAttributeHoverProvider);
     context.subscriptions.push(_codeActionsProvider);
     context.subscriptions.push(_cssColorProviders);
     context.subscriptions.push(_cssDefinitionProvider);
