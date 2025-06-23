@@ -13,6 +13,7 @@ import Store from "./store/Store";
 import { DefnitionProvider } from "./providers/ts/definitions";
 import { HoverProvider } from "./providers/ts/hover";
 import { DataAttributeHoverProvider } from "./providers/ts/data-attribute-hover";
+import { DataAttributeDefinitionProvider } from "./providers/ts/data-attribute-definition";
 import {
   SelectorsCompletionProvider,
   ImportCompletionProvider,
@@ -132,6 +133,10 @@ export async function activate(context: ExtensionContext): Promise<void> {
       documentSelector,
       new DefnitionProvider(),
     );
+    const _dataAttributeDefinitionProvider = languages.registerDefinitionProvider(
+      documentSelector,
+      new DataAttributeDefinitionProvider(),
+    );
     const _hoverProvider = languages.registerHoverProvider(
       documentSelector,
       new HoverProvider(),
@@ -191,6 +196,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
     context.subscriptions.push(_importsCompletionProvider);
     context.subscriptions.push(_cssVariablesCompletion);
     context.subscriptions.push(_definitionProvider);
+    context.subscriptions.push(_dataAttributeDefinitionProvider);
     context.subscriptions.push(_hoverProvider);
     context.subscriptions.push(_dataAttributeHoverProvider);
     context.subscriptions.push(_codeActionsProvider);
